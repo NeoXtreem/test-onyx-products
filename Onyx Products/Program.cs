@@ -40,7 +40,6 @@ if (app.Environment.IsDevelopment())
     context.SaveChanges();
 }
 
-
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "OK");
