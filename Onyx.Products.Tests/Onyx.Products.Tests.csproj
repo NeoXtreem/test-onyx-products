@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Onyx Products\Onyx Products.csproj" />
+    <ProjectReference Include="..\Onyx.Products\Onyx.Products.csproj" />
   </ItemGroup>
 
 </Project>

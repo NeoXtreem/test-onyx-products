@@ -45,8 +45,8 @@ app.UseHttpsRedirection();
 app.MapGet("/", () => "OK");
 
 app.MapGet(
-        "/api/products",
-        (StoreService storeService, [FromQuery(Name = "colour")] string? colour) => storeService.GetProducts(colour is null ? null : Color.FromName(colour)))
+        "/products",
+        (StoreService storeService, [FromQuery] string? colour) => storeService.GetProducts(colour is null ? null : Color.FromName(colour)))
     .RequireAuthorization(p => p.RequireRole("auditor").RequireClaim("scope", "products"));
 
 app.Run();

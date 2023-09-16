@@ -8,11 +8,11 @@ using Onyx.Products.Models;
 namespace Onyx.Products.Tests;
 
 [TestClass]
-public class ApiIntegrationTests
+public class ProductsTest
 {
     private readonly Fixture _fixture = new();
     private readonly WebApplicationFactory<Program> _factory = new();
-    private readonly IConfiguration _configuration = new ConfigurationBuilder().AddUserSecrets<ApiIntegrationTests>().Build();
+    private readonly IConfiguration _configuration = new ConfigurationBuilder().AddUserSecrets<ProductsTest>().Build();
     private const string TestColour1 = "Red";
     private const string TestColour2 = "Blue";
     private const string TestColour3 = "Green";
@@ -39,7 +39,7 @@ public class ApiIntegrationTests
         using var client = GetClient();
 
         // Act
-        var response = await client.GetAsync("/api/products");
+        var response = await client.GetAsync("/products");
 
         // Assert
         response.EnsureSuccessStatusCode();
@@ -58,7 +58,7 @@ public class ApiIntegrationTests
         using var client = GetClient();
 
         // Act
-        var response = await client.GetAsync($"/api/products?colour={colour}");
+        var response = await client.GetAsync($"/products?colour={colour}");
 
         // Assert
         response.EnsureSuccessStatusCode();
@@ -74,7 +74,7 @@ public class ApiIntegrationTests
         using var client = GetClient();
 
         // Act
-        var response = await client.GetAsync($"/api/products?colour={_fixture.Create<string>()}");
+        var response = await client.GetAsync($"/products?colour={_fixture.Create<string>()}");
 
         // Assert
         response.EnsureSuccessStatusCode();
